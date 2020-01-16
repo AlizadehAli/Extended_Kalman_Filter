@@ -137,7 +137,7 @@ int main() {
           msgJson["rmse_vx"] = RMSE(2);
           msgJson["rmse_vy"] = RMSE(3);
           auto msg = "42[\"estimate_marker\"," + msgJson.dump() + "]";
-          // std::cout << msg << std::endl;
+          std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
 
         }  // end "telemetry" if
@@ -149,6 +149,19 @@ int main() {
     }  // end websocket message if
 
   }); // end h.onMessage
+
+//  h.onHttpRequest([](uWS::HttpResponse *res, uWS::HttpRequest req, char *data, size_t, size_t) {
+//    const std::string s = "<h1>Hello world!</h1>";
+//    if (req.getUrl().valueLength == 1)
+//    {
+//      res->end(s.data(), s.length());
+//    }
+//    else
+//    {
+//      // i guess this should be done more gracefully?
+//      res->end(nullptr, 0);
+//    }
+//  });
 
   h.onConnection([&h](uWS::WebSocket<uWS::SERVER> ws, uWS::HttpRequest req) {
     std::cout << "Connected!!!" << std::endl;
