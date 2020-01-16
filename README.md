@@ -56,9 +56,35 @@ There are two datasets provided in the term2 simulator where it is aimed to have
 
 | Dataset 1 | Dataset 2 |
 |:---------:|:---------:|
-| ![simulator - dataset 1](readme_imgs/Dataset1.png) | ![simulator - dataset 2](readme_imgs/Dataset2.png) |
+| ![simulator - dataset 1](readme_imgs/dataset1.png) | ![simulator - dataset 2](readme_imgs/dataset2.png) |
 
+## [Rubric points](https://review.udacity.com/#!/rubrics/748/view) 
 
+### Compiling
+The code compiles without errors with `cmake` and `make`.
 
+### Accuracy
+px, py, vx, vy output coordinates must have an RMSE <= [.11, .11, 0.52, 0.52] when using the file: “obj_pose-laser-radar-synthetic-input.txt which is the same data file the simulator uses for Dataset 1”
+
+| data type | **Accuracy** |
+|:----------:|:----------:|
+| dataset 1 | *[0.0973, 0.0855, 0.4513, 0.4399]* |
+| dataset 2 | *[0.0726, 0.0965, 0.4216, 0.4932]* |
+
+The accuracy is satisfactory since in both datasets it is lower than the limit.
+
+### Follows the Correct Algorithm
+My Sensor Fusion algorithm follows the general processing flow as in src/kalman_filter.cpp. Prediction is implemented in line 142 of src/FusionEKF.cpp and lines 154-167 for update process. 
+
+the Kalman filter algorithm developed in this project adequately handles both radar and lidar measurements through a process flow of first predicts, then updates. the measurements of two sources are divided into two stepsl first measurement and update process.
+
+### Code Efficiency
+Regarding the calculations are done first, then the variables are used directly in later steps. An exmple of this approach is calculing the following cariables first and use them directly in the process covariance matrix `Q`:
+
+```sh
+float dt_2 = dt   * dt;
+float dt_3 = dt_2 * dt;
+float dt_4 = dt_3 * dt;
+```
 
 
