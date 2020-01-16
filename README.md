@@ -68,7 +68,7 @@ px, py, vx, vy output coordinates must have an RMSE <= [.11, .11, 0.52, 0.52] wh
 
 | data type | **Accuracy** |
 |:----------:|:----------:|
-| dataset 1 | *[0.0973, 0.0855, 0.4513, 0.4399]* |
+| dataset 1 | *[0.0964, 0.0853, 0.4154, 0.4316]* |
 | dataset 2 | *[0.0726, 0.0965, 0.4216, 0.4932]* |
 
 The accuracy is satisfactory since in both datasets it is lower than the limit.
